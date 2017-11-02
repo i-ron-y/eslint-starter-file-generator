@@ -1,6 +1,6 @@
 # ESLint Starter File Generator
 
-Extracts rules from ESLint's [List of available rules](https://eslint.org/docs/rules/) page and outputs fully-functional ESLint starter files with all rules set to 0.
+Extracts rules from ESLint's [List of available rules](https://eslint.org/docs/rules/) page and outputs fully-functional, starter ESLint config files with all rules set to 0.
 
 
 ## Usage
