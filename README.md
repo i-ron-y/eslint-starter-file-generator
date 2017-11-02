@@ -41,4 +41,5 @@ A `.eslintrc` file in `js`, `json`, or `yaml` format, according to user input, w
 A file with a user-defined name, in `js`, `json`, or `yaml` format according to user input, will be outputted in the same directory where `eslint-starter-file-generator.py` is found.
 <br />
 <br />
+<br />
 **WARNING**: If you already have files of the same name as the respective output files in this directory, they WILL be overwritten.
