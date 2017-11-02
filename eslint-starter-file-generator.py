@@ -54,7 +54,7 @@ for i in range(len(typeIds)):
 # WARNING: If you already have files named .eslintrc.js, .eslintrc.json, or .eslintrc.yaml in this directory, they WILL be overwritten.
 
 indent = ' '*4
-linebreak = '\n'*2
+emptyline = '\n'*2
 
 
 # Helper function: Prepare everything in the output file before the rules section
@@ -77,43 +77,43 @@ def prepareOutputStart(type):
 
 		parserString = firstIndent + commentSymbol + ' "parser": "espree",                         // compatible parsers: "espree" (default), "esprima", "babel-eslint", and "typescript-eslint-parser" (experimental)\n'
 
-		globalsString = (configCategoryHeaderStart + 'globals' + configCategoryHeaderEnd + linebreak +
-		                 secondIndent + commentSymbol + ' e.g. "angular": true' + linebreak +
+		globalsString = (configCategoryHeaderStart + 'globals' + configCategoryHeaderEnd + emptyline +
+		                 secondIndent + commentSymbol + ' e.g. "angular": true' + emptyline +
 		                 firstIndent + '},\n')
 
-		pluginsString = (firstIndent + '"plugins": [' + linebreak +
-		                 secondIndent + commentSymbol + ' e.g. "react" (must run `npm install eslint-plugin-react` first)' + linebreak +
+		pluginsString = (firstIndent + '"plugins": [' + emptyline +
+		                 secondIndent + commentSymbol + ' e.g. "react" (must run `npm install eslint-plugin-react` first)' + emptyline +
 		                 firstIndent + '],\n')
 
-		extendsString = (firstIndent + '"extends": [' + linebreak +
+		extendsString = (firstIndent + '"extends": [' + emptyline +
 		                 secondIndent + commentSymbol + ' "eslint:recommended"                    // enables a subset of core rules that report common problems, which have a check mark on the rules page\n' +
-		                 secondIndent + commentSymbol + ' "eslint:all"                            // enable all core rules in the currently installed version of ESLint' + linebreak +
+		                 secondIndent + commentSymbol + ' "eslint:all"                            // enable all core rules in the currently installed version of ESLint' + emptyline +
 		                 firstIndent + '],\n')
 
 	else:    # if type == 'yaml':
 
 		parserString = commentSymbol + ' parser: "espree",                        # compatible parsers: "espree" (default), "esprima", "babel-eslint", and "typescript-eslint-parser" (experimental)\n'
 
-		globalsString = (commentSymbol + ' globals' + configCategoryHeaderEnd + linebreak +
+		globalsString = (commentSymbol + ' globals' + configCategoryHeaderEnd + emptyline +
 		                 commentSymbol + secondIndent + commentSymbol + ' e.g. angular\n' +
 		                 commentSymbol + secondIndent + commentSymbol + ' angular: true\n')
 
-		pluginsString = (commentSymbol + ' plugins' + configCategoryHeaderEnd + linebreak +
+		pluginsString = (commentSymbol + ' plugins' + configCategoryHeaderEnd + emptyline +
 		                 commentSymbol + secondIndent + commentSymbol + ' e.g. react (must run `npm install eslint-plugin-react` first)\n' +
 		                 commentSymbol + secondIndent + commentSymbol + ' - react\n')
 
-		extendsString = (commentSymbol + ' extends' + configCategoryHeaderEnd + linebreak +
+		extendsString = (commentSymbol + ' extends' + configCategoryHeaderEnd + emptyline +
 		                 commentSymbol + secondIndent + commentSymbol + ' - eslint:recommended                # enables a subset of core rules that report common problems, which have a check mark on the rules page\n' +
 		                 commentSymbol + secondIndent + commentSymbol + ' - eslint:all                        # enable all core rules in the currently installed version of ESLint\n')
 
-	outputStart = (openingChars + linebreak +
-		           fileDesc + linebreak +
-		           parserOptionsString + linebreak +
-		           parserString + linebreak +
-		           envString + linebreak +
-		           globalsString + linebreak +
-		           pluginsString + linebreak +
-		           extendsString + linebreak)
+	outputStart = (openingChars + emptyline +
+		           fileDesc + emptyline +
+		           parserOptionsString + emptyline +
+		           parserString + emptyline +
+		           envString + emptyline +
+		           globalsString + emptyline +
+		           pluginsString + emptyline +
+		           extendsString + emptyline)
 
 	return outputStart
 
@@ -123,18 +123,19 @@ def prepareFileDesc(type):
 
 	fileDesc = (firstIndent + commentSymbol + ' [' + type.upper() + ']\n' +
 		        firstIndent + commentSymbol + '\n' +
-		        firstIndent + commentSymbol + ' An .eslintrc starter file with all rules (set to 0) and envs (set to false) listed.\n' +
+		        firstIndent + commentSymbol + ' A starter ESLint config file with all rules (set to 0) and envs (set to false) listed.\n' +
 		        firstIndent + commentSymbol + ' Other options (although by no means comprehensive) are either set to false or else commented out.\n' +
 		        firstIndent + commentSymbol + '\n' +
 		        firstIndent + commentSymbol + ' Updated on ' + datetime.datetime.now().strftime ("%Y-%m-%d") + '.\n' +
 		        firstIndent + commentSymbol + '\n' +
-		        firstIndent + commentSymbol + ' Starter files generated by a customised version of ESLint Starter File Generator:\n' +
+		        firstIndent + commentSymbol + ' Starter file generated by a customised version of ESLint Starter File Generator:\n' +
 		        firstIndent + commentSymbol + '     https://github.com/i-ron-y/eslint-starter-file-generator\n' +
 		        firstIndent + commentSymbol + '\n' +
 		        firstIndent + commentSymbol + ' ESLint docs -- Configuring ESLint:      https://eslint.org/docs/user-guide/configuring\n' +
 		        firstIndent + commentSymbol + ' ESLint docs -- List of available rules: https://eslint.org/docs/rules/\n')
 
 	return fileDesc
+
 
 # Helper function: Prepare the parser options config group
 def prepareParserOptionsString(type):
@@ -143,31 +144,43 @@ def prepareParserOptionsString(type):
 
 	if type == 'js' or type == 'json':
 
-		parserOptionsString = (configCategoryHeaderStart + 'parserOptions' + configCategoryHeaderEnd + linebreak +
+		parserOptionsString = (configCategoryHeaderStart + 'parserOptions' + configCategoryHeaderEnd +
+			                   emptyline +
 			                   secondIndent + commentSymbol + ' "ecmaVersion": 5,                       // set to 3, 5 (default), 6, 7, or 8 to specify the version of ECMAScript syntax you want to use.\n' +
-			                   secondIndent + commentSymbol + '                                         // You can also set to 2015 (same as 6), 2016 (same as 7), or 2017 (same as 8) to use the year-based naming.' + linebreak +
-			                   secondIndent + commentSymbol + ' "sourceType": "script",                 // set to "script" (default) or "module" if your code is in ECMAScript modules.' + linebreak +
-			                   itemStart + 'ecmaFeatures' + configCategoryHeaderEnd + linebreak +
+			                   secondIndent + commentSymbol + '                                         // You can also set to 2015 (same as 6), 2016 (same as 7), or 2017 (same as 8) to use the year-based naming.' +
+			                   emptyline +
+			                   secondIndent + commentSymbol + ' "sourceType": "script",                 // set to "script" (default) or "module" if your code is in ECMAScript modules.' +
+			                   emptyline +
+			                   itemStart + 'ecmaFeatures' + configCategoryHeaderEnd +
+			                   emptyline +
 			                   thirdIndent + '"globalReturn": false,              // allow return statements in the global scope\n' +
 			                   thirdIndent + '"impliedStrict": false,             // enable global strict mode (if ecmaVersion is 5 or greater)\n' +
-			                   thirdIndent + '"jsx": false,                       // enable JSX' + linebreak +
+			                   thirdIndent + '"jsx": false,                       // enable JSX' +
+			                   emptyline +
 			                   thirdIndent + '"experimentalObjectRestSpread": false   // enable support for the experimental object rest/spread properties\n' +
 			                   thirdIndent + commentSymbol + ' (IMPORTANT: This is an experimental feature that may change significantly in the future.\n' +
 			                   thirdIndent + commentSymbol + ' It’s recommended that you do not write rules relying on this functionality unless you are\n' +
-			                   thirdIndent + commentSymbol + ' willing to incur maintenance cost when it changes.)' + linebreak +
-			                   secondIndent + '}' + linebreak +
+			                   thirdIndent + commentSymbol + ' willing to incur maintenance cost when it changes.)' +
+			                   emptyline +
+			                   secondIndent + '}' +
+			                   emptyline +
 			                   firstIndent + '},\n')
 
 	else:    # if type == 'yaml'
 
-		parserOptionsString = (configCategoryHeaderStart + 'parserOptions' + configCategoryHeaderEnd + linebreak +
+		parserOptionsString = (configCategoryHeaderStart + 'parserOptions' + configCategoryHeaderEnd +
+			                   emptyline +
 			                   secondIndent + commentSymbol + ' ecmaVersion: 5                       # set to 3, 5 (default), 6, 7, or 8 to specify the version of ECMAScript syntax you want to use.\n' +
-			                   secondIndent + commentSymbol + '                                      # You can also set to 2015 (same as 6), 2016 (same as 7), or 2017 (same as 8) to use the year-based naming.' + linebreak +
-			                   secondIndent + commentSymbol + ' sourceType: "script"                 # set to "script" (default) or "module" if your code is in ECMAScript modules.' + linebreak +
-			                   itemStart + 'ecmaFeatures' + configCategoryHeaderEnd + linebreak +
+			                   secondIndent + commentSymbol + '                                      # You can also set to 2015 (same as 6), 2016 (same as 7), or 2017 (same as 8) to use the year-based naming.' +
+			                   emptyline +
+			                   secondIndent + commentSymbol + ' sourceType: "script"                 # set to "script" (default) or "module" if your code is in ECMAScript modules.' +
+			                   emptyline +
+			                   itemStart + 'ecmaFeatures' + configCategoryHeaderEnd +
+			                   emptyline +
 			                   thirdIndent + 'globalReturn: false              # allow return statements in the global scope\n' +
 			                   thirdIndent + 'impliedStrict: false             # enable global strict mode (if ecmaVersion is 5 or greater)\n' +
-			                   thirdIndent + 'jsx: false                       # enable JSX' + linebreak +
+			                   thirdIndent + 'jsx: false                       # enable JSX' +
+			                   emptyline +
 			                   thirdIndent + 'experimentalObjectRestSpread: false   # enable support for the experimental object rest/spread properties\n' +
 			                   thirdIndent + commentSymbol + ' (IMPORTANT: This is an experimental feature that may change significantly in the future.\n' +
 			                   thirdIndent + commentSymbol + ' It’s recommended that you do not write rules relying on this functionality unless you are\n' +
@@ -206,7 +219,7 @@ def prepareEnvString(type):
             ('greasemonkey', 'GreaseMonkey globals.')
            ]
 
-	envStringGroup = configCategoryHeaderStart + 'env' + configCategoryHeaderEnd + linebreak
+	envStringGroup = configCategoryHeaderStart + 'env' + configCategoryHeaderEnd + emptyline
 
 	for i in range(len(envs)):
 
@@ -276,9 +289,9 @@ def formatRules(type):
 			ruleString = ruleNameString + ' '*(columnDefn-len(ruleNameString)) + ruleDefnString
 			groupRulesString += ruleString + '\n'
 
-		groupString = headerString + linebreak + groupRulesString
+		groupString = headerString + emptyline + groupRulesString
 
-		formattedRules += groupString + linebreak
+		formattedRules += groupString + emptyline
 
 	return formattedRules
 
@@ -326,12 +339,12 @@ def formatOutput(type):
 	formattedRules = formatRules(type)
 	
 	if type == 'js' or type == 'json':
-		outputEnd = firstIndent + '}' + linebreak + '}'
+		outputEnd = firstIndent + '}' + emptyline + '}'
 	
 	else:    # if type == 'yaml':
 		outputEnd = ''
 
-	outputString = outputStart + ruleConfigHeader + linebreak + usageString + linebreak + formattedRules + outputEnd
+	outputString = outputStart + ruleConfigHeader + emptyline + usageString + emptyline + formattedRules + outputEnd
 
 	return outputString
 

@@ -1,6 +1,6 @@
 # ESLint Starter File Generator
 
-Extracts rules from ESLint's [List of available rules](https://eslint.org/docs/rules/) page and outputs fully-functional .eslintrc starter files.
+Extracts rules from ESLint's [List of available rules](https://eslint.org/docs/rules/) page and outputs fully-functional ESLint starter files with all rules set to 0.
 
 
 ## Usage
@@ -38,7 +38,7 @@ A `.eslintrc` file in `js`, `json`, or `yaml` format, according to user input, w
 <br />
 ##### Output for 2 arguments:
 
-A file with a user-defined name, in `js`, `json`, or `yaml` format according to user input, will be outputted in the same directory where `eslint-starter-file-generator.py` is found.
+A file with a user-provided name, in `js`, `json`, or `yaml` format according to user input, will be outputted in the same directory where `eslint-starter-file-generator.py` is found.
 <br />
 <br />
 <br />
