@@ -15,12 +15,12 @@ pip install requests
 pip install BeautifulSoup4
 ````
 
-Go to the directory where `eslint-starter-file-generator.py` is located.
+Go to the directory where `eslint-starter-generator.py` is located.
 
 Run:
 
 ````
-python eslint-starter-file-generator.py [filetype [filename]]
+python eslint-starter-generator.py [filetype [filename]]
 ````
 
 Valid filetypes are: `js`, `json`, `yaml`
@@ -28,17 +28,17 @@ Valid filetypes are: `js`, `json`, `yaml`
 <br />
 ##### Output for 0 arguments:
 
-`.eslintrc.js`, `.eslintrc.json`, and `.eslintrc.yaml` files will be outputted in the same directory where `eslint-starter-file-generator.py` is found.
+`.eslintrc.js`, `.eslintrc.json`, and `.eslintrc.yaml` files will be outputted in the same directory where `eslint-starter-generator.py` is found.
 <br />
 <br />
 ##### Output for 1 argument:
 
-A `.eslintrc` file in `js`, `json`, or `yaml` format, according to user input, will be outputted in the same directory where `eslint-starter-file-generator.py` is found.
+A `.eslintrc` file in `js`, `json`, or `yaml` format, according to user input, will be outputted in the same directory where `eslint-starter-generator.py` is found.
 <br />
 <br />
 ##### Output for 2 arguments:
 
-A file with a user-provided name, in `js`, `json`, or `yaml` format according to user input, will be outputted in the same directory where `eslint-starter-file-generator.py` is found.
+A file with a user-provided name, in `js`, `json`, or `yaml` format according to user input, will be outputted in the same directory where `eslint-starter-generator.py` is found.
 <br />
 <br />
 <br />
